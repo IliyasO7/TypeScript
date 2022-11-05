@@ -1,30 +1,17 @@
 "use strict";
-// Types number, tring boolean object array types 
-const num1Ele = document.getElementById('num1');
-const num2Ele = document.getElementById('num2');
-const buttonEle = document.querySelector('button');
-const numResults = []; //specify what vlaues would be stored
-//const textResuls = [];
-function add(num1, num2) {
-    return num1 + num2;
-}
-//console.log(add(1 , 6));
-if (buttonEle) {
-    buttonEle.addEventListener('click', () => {
-        const num1 = num1Ele.value; //value always return string
-        const num2 = num2Ele.value;
-        const result = add(+num1, +num2);
-        numResults.push(result);
-        console.log(result);
-        const ResultObj = { val: Number,
-            timestamp: Date
-        };
-        printResult({ val: result, timestamp: new Date() }); //interface
-        console.log(numResults);
-    });
-}
-//working with objects
-function printResult(resultObj) {
-    console.log('object:' + resultObj.val);
-}
-//console.log(add('1', '6')); // complains as its string
+//import express from 'express';
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+//@types/node hepes ts to traslate node js libraries and mekes it understandable
+//typescript is deisgned by default for web browser
+//adn there we dont have require we have import
+const express_1 = __importDefault(require("express"));
+const body_parser_1 = __importDefault(require("body-parser"));
+const todos_1 = __importDefault(require("./routes/todos")); //alwasy pick defaultexport from file
+//import express = require('express')
+const app = (0, express_1.default)();
+app.use(body_parser_1.default.json());
+app.use(todos_1.default);
+app.listen(7000);
