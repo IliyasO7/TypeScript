@@ -60,6 +60,8 @@ const addTodo = async (req:Request,res:Response)=>{
             id:new Date().toISOString(),
             text: tname.text 
         }
+
+        
         todos.push(newToDo);
 
         await redisClient.connect();
